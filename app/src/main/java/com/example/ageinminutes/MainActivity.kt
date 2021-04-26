@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.example.ageinminutes.databinding.ActivityMainBinding
+import java.text.SimpleDateFormat
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -29,8 +30,28 @@ class MainActivity : AppCompatActivity() {
         val month = myCalendar.get(Calendar.MONTH)
         val day = myCalendar.get(Calendar.DAY_OF_MONTH)
         DatePickerDialog(this,
-                DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
-                    Toast.makeText(this, "Calendar works", Toast.LENGTH_LONG).show()
+                DatePickerDialog.OnDateSetListener { view, selectedYear, selectedMonth, selectedDayOfMonth ->
+                    Toast.makeText(this, "The choosen year is $selectedYear, and the month is $selectedMonth, and the day is $selectedDayOfMonth", Toast.LENGTH_LONG).show()
+
+                    //All the calculation belows
+                    val selectedDate = "$selectedDayOfMonth/${selectedMonth+1}/$selectedYear"
+
+                    binding.tvSelectedDate.setText(selectedDate)
+
+                    //format the date (Simple date format)
+                    val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.GERMANY)
+
+                    val theDate = sdf.parse(selectedDate) //<-- we converted it to a date object (parse)
+
+                    val selectedDateInMinutes = theDate!!.time / 60000
+
+                    val currentDate = sdf.parse(sdf.format(System.currentTimeMillis()))
+
+                    val currentDateToMinutes = currentDate!!.time / 60000
+
+                    val differenceInMinutes = currentDateToMinutes - selectedDateInMinutes
+
+                    binding.tvSelectedDateInMinute.setText(differenceInMinutes.toString())
 
                 }
                 ,year
