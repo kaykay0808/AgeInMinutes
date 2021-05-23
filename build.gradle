@@ -3,7 +3,6 @@ buildscript {
     ext.kotlin_version = "1.4.32"
     repositories {
         google()
-        jcenter()
         mavenCentral()
     }
     dependencies {
@@ -22,7 +21,6 @@ allprojects {
     apply plugin: "org.jlleitschuh.gradle.ktlint" // Version should be inherited from parent
     repositories {
         google()
-        jcenter()
         mavenCentral()
     }
 }
