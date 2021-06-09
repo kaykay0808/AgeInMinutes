@@ -7,7 +7,8 @@ gjennom koder og logikk.
 
 I tillegg fikk jeg mer kjennskap til hvordan man bruker Android widgets som  date picker, og hvordan man kalkuler innformasjon brukeren setter inn i date picker
 
-English description:
+
+ENGLISH TRANSLATION:
 This is a simple app that calculates how long you have lived in minutes by entering your age.
 I built this app basically to learn the structure of Android Studio, and how to set up different UIs, as well as how to communicate to these UIs
 through codes and logic.
